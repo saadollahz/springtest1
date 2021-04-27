@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script type="text/javascript">
+        function page_Load() {
+            //  alert('sadi is here')
+        }
+
+
+
+        function pass_f() {
+            //   alert('oh lala')
+        }
+
+        function user_b(e) {
+
+            // keyCode c'est une methode pour connaitre les code des clavier code
+            if (e.keyCode != 8 && e.keyCode != 13)
+                document.getElementById('counter').innerHTML = eval(document.getElementById('counter').innerHTML) + 1
+        }
+
+        function user_keydown(e) {
+            if (e.keyCode == 8 && document.getElementById('counter').innerHTML != 0) {
+                document.getElementById('counter').innerHTML = eval(document.getElementById('counter').innerHTML) - 1
+            }
+
+            if (e.keyCode == 13) {
+                document.getElementById('pass').focus();
+            }
+            if (e.keyCode == 106) {
+                e.preventDefault(); // empecher de fonctionne normale!
+            }
+        }
+
+        function pass_mousover(elem) {
+            elem.value = "entrer votre password s'il vous plait"
+        }
+
+        function pass_mousout(ele) {
+            ele.value = ""
+        }
+
+        function validation(val) {
+            if (user != 'sadi' && pass != 'sadi')
+                val.preventDefault();
+
+        }
+    </script>
+</head>
+
+<body onload="page_Load()" style="background-image: url('img/register.jpg');">
+
+<h1>welcome to sadi website</h1>
+<form action="01.html" method="get" onsubmit="validation(valid)">
+    <input type="text" id="user" name="user" placeholder="username" onkeyup="user_b(event)" onkeydown="user_keydown(event)">
+    <input type="password" id="pass" name="pass" placeholder="password" onfocus="pass_f()" onmouseover="pass_mousover(this)" onmouseout="pass_mousout(this)">
+    <!-- <span id="passcounter"></span> -->
+    <br>
+    <input type="submit" value="login">
+</form>
+<br>
+<span id='counter'>0</span>
+
+
+</body>
+
+</html>
